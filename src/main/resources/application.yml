@@ -1,0 +1,68 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: session-tracker
+
+  # PostgreSQL Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/session_tracker
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
+  # Flyway Migration
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  # Redis Configuration
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5000ms
+
+# JWT Configuration
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970337336763979244226452948404D6351655468576D5A7134743777217A25432A46
+    expiration-ms: 3600000       # 1 hour
+    refresh-window-ms: 900000    # 15 minutes before expiry
+
+  # Session Configuration
+  session:
+    max-sessions-per-user: 5
+    timeout-minutes: 60
+    cleanup-interval-ms: 900000  # 15 minutes
+
+  # Rate Limiting
+  rate-limit:
+    login-attempts: 5
+    window-seconds: 300          # 5 minutes
+
+# Logging
+logging:
+  level:
+    com.timecom.sessiontracker: DEBUG
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
