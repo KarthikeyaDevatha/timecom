@@ -7,14 +7,39 @@ A comprehensive session tracking system built with Java Spring Boot and React.
 - **Backend:** Spring Boot application providing RESTful APIs for authentication, robust session management, rate limiting, and analytics.
 - **Frontend:** React application built with Vite and Tailwind CSS for visualizing session data and user activity.
 
-## Prerequisites
+## System Prerequisites
 
-Before running the application, ensure you have the following installed and running:
+Before running the application, ensure you have the following installed and running on your system:
 
 - **Java 21+** (for the Spring Boot backend)
-- **Node.js** (for the React frontend)
+- **Node.js** (v18+ recommended) & **npm** (for the React frontend)
 - **PostgreSQL**: Must be running on `localhost:5432`. Ensure a database named `session_tracker` exists with user/password as `postgres`/`postgres` (can be configured in `application.yml`).
 - **Redis**: Must be running on `localhost:6379` for session caching and rate-limiting.
+
+## Project Dependencies
+
+### Backend Dependencies (Maven)
+- **Spring Boot 3.x**
+  - Spring Web (REST APIs)
+  - Spring Data JPA (Database access)
+  - Spring Data Redis (Session caching)
+  - Spring Security (Authentication)
+  - Spring Validation
+- **PostgreSQL Driver** (Database connectivity)
+- **High-Performance Redis Lettuce Client**
+- **Flyway** (Database migrations)
+- **JJWT** (JSON Web Tokens integration)
+- **Lombok** (Boilerplate reduction)
+
+### Frontend Dependencies (npm/package.json)
+- **React 19 & React DOM**
+- **Vite** (Build tool and dev server)
+- **Tailwind CSS & Autoprefixer** (Styling)
+- **React Router DOM** (Navigation)
+- **Axios** (HTTP Client)
+- **Zustand** (State management)
+- **Recharts** (Data visualization)
+- **Lucide React** (Icons)
 
 ## Running the Backend
 
